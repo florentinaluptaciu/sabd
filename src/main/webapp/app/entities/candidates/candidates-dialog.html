@@ -1,45 +1,46 @@
-
 <form name="editForm" role="form" novalidate ng-submit="vm.save()">
 
-    <div class="modal-header">
+    <div class="modal-header" style="border-bottom: none !important;">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 ng-click="vm.clear()">&times;</button>
         <h4 class="modal-title" id="myCandidatesLabel">Create or edit a Candidates</h4>
     </div>
-    <div class="modal-body">
+    <table>
         <jhi-alert-error></jhi-alert-error>
-        <div class="form-group" ng-show="vm.candidates.id">
-            <label for="id">ID</label>
-            <input type="text" class="form-control" id="id" name="id"
-                    ng-model="vm.candidates.id" readonly />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_firstName">First Name</label>
-            <input type="text" class="form-control" name="firstName" id="field_firstName"
-                    ng-model="vm.candidates.firstName"
-                     />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_lastName">Last Name</label>
-            <input type="text" class="form-control" name="lastName" id="field_lastName"
-                    ng-model="vm.candidates.lastName"
-                     />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_email">Email</label>
-            <input type="text" class="form-control" name="email" id="field_email"
-                    ng-model="vm.candidates.email"
-                     />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_phoneNumber">Phone Number</label>
-            <input type="text" class="form-control" name="phoneNumber" id="field_phoneNumber"
-                    ng-model="vm.candidates.phoneNumber"
-                     />
-        </div>
-
-    </div>
-    <div class="modal-footer">
+        <tr>
+            <td >
+                <label class="control-label" for="field_firstName" style="margin-left: 30px ">First Name: </label>
+            </td>
+            <td>
+                <input type="text"  class="form-control" name="firstName" id="field_firstName"
+                       ng-model="vm.candidates.firstName"/>
+            </td>
+            <td>
+                <label class="control-label" for="field_lastName" style="margin-left: 30px ">Last Name: </label>
+            </td>
+            <td>
+                <input type="text" class="form-control" name="lastName" id="field_lastName"
+                       ng-model="vm.candidates.lastName"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="control-label" for="field_email" style="margin-left: 30px ">Email: </label>
+            </td>
+            <td>
+                <input type="text" class="form-control" style="margin-top: 5px "  name="email" id="field_email"
+                       ng-model="vm.candidates.email"/>
+            </td>
+            <td>
+                <label class="control-label" for="field_phoneNumber" style="margin-left: 30px ">Phone Number: </label>
+            </td>
+            <td>
+                <input type="text" class="form-control" style="margin-top: 5px " name="phoneNumber" id="field_phoneNumber"
+                       ng-model="vm.candidates.phoneNumber"/>
+            </td>
+        </tr>
+    </table>
+    <div class="modal-footer" style="margin-top: 10px">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
             <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
         </button>
