@@ -1,0 +1,41 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "content",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        },
+        {
+            "fieldName": "answer1",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "answer2",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "answer3",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "rightAnswer",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "isActive",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "category",
+            "fieldType": "CATEGORY",
+            "fieldValues": "JAVA,HTML,SQL"
+        }
+    ],
+    "changelogDate": "20161030164442",
+    "dto": "mapstruct",
+    "service": "serviceClass",
+    "entityTableName": "question",
+    "pagination": "pager"
+}

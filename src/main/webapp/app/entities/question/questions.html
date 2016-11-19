@@ -1,0 +1,70 @@
+<div>
+    <h2>Questions</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="question.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Question
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="content"><span>Content</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="answer1"><span>Answer 1</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="answer2"><span>Answer 2</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="answer3"><span>Answer 3</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="rightAnswer"><span>Right Answer</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="isActive"><span>Is Active</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="category"><span>Category</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="question in vm.questions track by question.id">
+                    <td>{{question.content}}</td>
+                    <td>{{question.answer1}}</td>
+                    <td>{{question.answer2}}</td>
+                    <td>{{question.answer3}}</td>
+                    <td>{{question.rightAnswer}}</td>
+                    <td>{{question.isActive}}</td>
+                    <td>{{question.category}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="question-detail({id:question.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="question.edit({id:question.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="question.delete({id:question.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+    </div>
+    <uib-pager total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pager>
+</div>
