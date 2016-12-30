@@ -28,9 +28,9 @@
         <dd>
             <span>{{vm.question.isActive}}</span>
         </dd>
-        <dt><span>Category</span></dt>
+        <dt><span>Subcategory</span></dt>
         <dd>
-            <span>{{vm.question.category}}</span>
+            <a ui-sref="subcategory-detail({id:vm.question.subcategoryId})">{{vm.question.subcategorySubcategoryName}}</a>
         </dd>
     </dl>
 

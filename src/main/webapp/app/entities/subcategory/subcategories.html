@@ -1,0 +1,62 @@
+<div>
+    <h2>Subcategories</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="subcategory.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Subcategory
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>Subcategory Name</span></th>
+                    <th><span>Is Active</span></th>
+                    <th><span>Category</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="subcategory in vm.subcategories track by subcategory.id">
+                    <td><a ui-sref="subcategory-detail({id:subcategory.id})">{{subcategory.id}}</a></td>
+                    <td>{{subcategory.subcategoryName}}</td>
+                    <td>{{subcategory.isActive}}</td>
+                    <td>
+                        <a ui-sref="category-detail({id:subcategory.categoryId})">{{subcategory.categoryCategoryName}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="subcategory-detail({id:subcategory.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="subcategory.edit({id:subcategory.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="subcategory.delete({id:subcategory.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

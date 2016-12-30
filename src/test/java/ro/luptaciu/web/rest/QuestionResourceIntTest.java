@@ -33,7 +33,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-import ro.luptaciu.domain.enumeration.CATEGORY;
 /**
  * Test class for the QuestionResource REST controller.
  *
@@ -60,9 +59,6 @@ public class QuestionResourceIntTest {
 
     private static final Boolean DEFAULT_IS_ACTIVE = false;
     private static final Boolean UPDATED_IS_ACTIVE = true;
-
-    private static final CATEGORY DEFAULT_CATEGORY = CATEGORY.JAVA;
-    private static final CATEGORY UPDATED_CATEGORY = CATEGORY.HTML;
 
     @Inject
     private QuestionRepository questionRepository;
@@ -109,8 +105,7 @@ public class QuestionResourceIntTest {
                 .answer2(DEFAULT_ANSWER_2)
                 .answer3(DEFAULT_ANSWER_3)
                 .rightAnswer(DEFAULT_RIGHT_ANSWER)
-                .isActive(DEFAULT_IS_ACTIVE)
-                .category(DEFAULT_CATEGORY);
+                .isActive(DEFAULT_IS_ACTIVE);
         return question;
     }
 
@@ -142,7 +137,6 @@ public class QuestionResourceIntTest {
         assertThat(testQuestion.getAnswer3()).isEqualTo(DEFAULT_ANSWER_3);
         assertThat(testQuestion.getRightAnswer()).isEqualTo(DEFAULT_RIGHT_ANSWER);
         assertThat(testQuestion.isIsActive()).isEqualTo(DEFAULT_IS_ACTIVE);
-        assertThat(testQuestion.getCategory()).isEqualTo(DEFAULT_CATEGORY);
     }
 
     @Test
@@ -161,8 +155,7 @@ public class QuestionResourceIntTest {
                 .andExpect(jsonPath("$.[*].answer2").value(hasItem(DEFAULT_ANSWER_2.toString())))
                 .andExpect(jsonPath("$.[*].answer3").value(hasItem(DEFAULT_ANSWER_3.toString())))
                 .andExpect(jsonPath("$.[*].rightAnswer").value(hasItem(DEFAULT_RIGHT_ANSWER)))
-                .andExpect(jsonPath("$.[*].isActive").value(hasItem(DEFAULT_IS_ACTIVE.booleanValue())))
-                .andExpect(jsonPath("$.[*].category").value(hasItem(DEFAULT_CATEGORY.toString())));
+                .andExpect(jsonPath("$.[*].isActive").value(hasItem(DEFAULT_IS_ACTIVE.booleanValue())));
     }
 
     @Test
@@ -181,8 +174,7 @@ public class QuestionResourceIntTest {
             .andExpect(jsonPath("$.answer2").value(DEFAULT_ANSWER_2.toString()))
             .andExpect(jsonPath("$.answer3").value(DEFAULT_ANSWER_3.toString()))
             .andExpect(jsonPath("$.rightAnswer").value(DEFAULT_RIGHT_ANSWER))
-            .andExpect(jsonPath("$.isActive").value(DEFAULT_IS_ACTIVE.booleanValue()))
-            .andExpect(jsonPath("$.category").value(DEFAULT_CATEGORY.toString()));
+            .andExpect(jsonPath("$.isActive").value(DEFAULT_IS_ACTIVE.booleanValue()));
     }
 
     @Test
@@ -208,8 +200,7 @@ public class QuestionResourceIntTest {
                 .answer2(UPDATED_ANSWER_2)
                 .answer3(UPDATED_ANSWER_3)
                 .rightAnswer(UPDATED_RIGHT_ANSWER)
-                .isActive(UPDATED_IS_ACTIVE)
-                .category(UPDATED_CATEGORY);
+                .isActive(UPDATED_IS_ACTIVE);
         QuestionDTO questionDTO = questionMapper.questionToQuestionDTO(updatedQuestion);
 
         restQuestionMockMvc.perform(put("/api/questions")
@@ -227,7 +218,6 @@ public class QuestionResourceIntTest {
         assertThat(testQuestion.getAnswer3()).isEqualTo(UPDATED_ANSWER_3);
         assertThat(testQuestion.getRightAnswer()).isEqualTo(UPDATED_RIGHT_ANSWER);
         assertThat(testQuestion.isIsActive()).isEqualTo(UPDATED_IS_ACTIVE);
-        assertThat(testQuestion.getCategory()).isEqualTo(UPDATED_CATEGORY);
     }
 
     @Test

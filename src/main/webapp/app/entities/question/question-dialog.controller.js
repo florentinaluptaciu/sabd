@@ -5,9 +5,9 @@
         .module('interviewApp')
         .controller('QuestionDialogController', QuestionDialogController);
 
-    QuestionDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'Question'];
+    QuestionDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'Question', 'Subcategory'];
 
-    function QuestionDialogController ($timeout, $scope, $stateParams, $uibModalInstance, DataUtils, entity, Question) {
+    function QuestionDialogController ($timeout, $scope, $stateParams, $uibModalInstance, DataUtils, entity, Question, Subcategory) {
         var vm = this;
 
         vm.question = entity;
@@ -15,6 +15,7 @@
         vm.byteSize = DataUtils.byteSize;
         vm.openFile = DataUtils.openFile;
         vm.save = save;
+        vm.subcategories = Subcategory.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

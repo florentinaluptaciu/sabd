@@ -18,25 +18,29 @@
         <table class="jh-table table table-striped">
             <thead>
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="content"><span>Content</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="answer1"><span>Answer 1</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="answer2"><span>Answer 2</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="answer3"><span>Answer 3</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="rightAnswer"><span>Right Answer</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="isActive"><span>Is Active</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="category"><span>Category</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="subcategorySubcategoryName"><span>Subcategory</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="question in vm.questions track by question.id">
+                    <td><a ui-sref="question-detail({id:question.id})">{{question.id}}</a></td>
                     <td>{{question.content}}</td>
                     <td>{{question.answer1}}</td>
                     <td>{{question.answer2}}</td>
                     <td>{{question.answer3}}</td>
                     <td>{{question.rightAnswer}}</td>
                     <td>{{question.isActive}}</td>
-                    <td>{{question.category}}</td>
+                    <td>
+                        <a ui-sref="subcategory-detail({id:question.subcategoryId})">{{question.subcategorySubcategoryName}}</a>
+                    </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

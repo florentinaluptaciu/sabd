@@ -5,9 +5,9 @@
         .module('interviewApp')
         .controller('QuestionDetailController', QuestionDetailController);
 
-    QuestionDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'DataUtils', 'entity', 'Question'];
+    QuestionDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'DataUtils', 'entity', 'Question', 'Subcategory'];
 
-    function QuestionDetailController($scope, $rootScope, $stateParams, previousState, DataUtils, entity, Question) {
+    function QuestionDetailController($scope, $rootScope, $stateParams, previousState, DataUtils, entity, Question, Subcategory) {
         var vm = this;
 
         vm.question = entity;

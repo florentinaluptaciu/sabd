@@ -2,9 +2,9 @@
 
 describe('Controller Tests', function() {
 
-    describe('Question Management Detail Controller', function() {
+    describe('Subcategory Management Detail Controller', function() {
         var $scope, $rootScope;
-        var MockEntity, MockPreviousState, MockQuestion, MockSubcategory;
+        var MockEntity, MockPreviousState, MockSubcategory, MockCategory;
         var createController;
 
         beforeEach(inject(function($injector) {
@@ -12,8 +12,8 @@ describe('Controller Tests', function() {
             $scope = $rootScope.$new();
             MockEntity = jasmine.createSpy('MockEntity');
             MockPreviousState = jasmine.createSpy('MockPreviousState');
-            MockQuestion = jasmine.createSpy('MockQuestion');
             MockSubcategory = jasmine.createSpy('MockSubcategory');
+            MockCategory = jasmine.createSpy('MockCategory');
             
 
             var locals = {
@@ -21,18 +21,18 @@ describe('Controller Tests', function() {
                 '$rootScope': $rootScope,
                 'entity': MockEntity,
                 'previousState': MockPreviousState,
-                'Question': MockQuestion,
-                'Subcategory': MockSubcategory
+                'Subcategory': MockSubcategory,
+                'Category': MockCategory
             };
             createController = function() {
-                $injector.get('$controller')("QuestionDetailController", locals);
+                $injector.get('$controller')("SubcategoryDetailController", locals);
             };
         }));
 
 
         describe('Root Scope Listening', function() {
             it('Unregisters root scope listener upon scope destruction', function() {
-                var eventType = 'interviewApp:questionUpdate';
+                var eventType = 'interviewApp:subcategoryUpdate';
 
                 createController();
                 expect($rootScope.$$listenerCount[eventType]).toEqual(1);

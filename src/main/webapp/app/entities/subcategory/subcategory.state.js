@@ -9,64 +9,44 @@
 
     function stateConfig($stateProvider) {
         $stateProvider
-        .state('question', {
+        .state('subcategory', {
             parent: 'entity',
-            url: '/question?page&sort&search',
+            url: '/subcategory',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'Questions'
+                pageTitle: 'Subcategories'
             },
             views: {
                 'content@': {
-                    templateUrl: 'app/entities/question/questions.html',
-                    controller: 'QuestionController',
+                    templateUrl: 'app/entities/subcategory/subcategories.html',
+                    controller: 'SubcategoryController',
                     controllerAs: 'vm'
                 }
             },
-            params: {
-                page: {
-                    value: '1',
-                    squash: true
-                },
-                sort: {
-                    value: 'id,asc',
-                    squash: true
-                },
-                search: null
-            },
             resolve: {
-                pagingParams: ['$stateParams', 'PaginationUtil', function ($stateParams, PaginationUtil) {
-                    return {
-                        page: PaginationUtil.parsePage($stateParams.page),
-                        sort: $stateParams.sort,
-                        predicate: PaginationUtil.parsePredicate($stateParams.sort),
-                        ascending: PaginationUtil.parseAscending($stateParams.sort),
-                        search: $stateParams.search
-                    };
-                }]
             }
         })
-        .state('question-detail', {
+        .state('subcategory-detail', {
             parent: 'entity',
-            url: '/question/{id}',
+            url: '/subcategory/{id}',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'Question'
+                pageTitle: 'Subcategory'
             },
             views: {
                 'content@': {
-                    templateUrl: 'app/entities/question/question-detail.html',
-                    controller: 'QuestionDetailController',
+                    templateUrl: 'app/entities/subcategory/subcategory-detail.html',
+                    controller: 'SubcategoryDetailController',
                     controllerAs: 'vm'
                 }
             },
             resolve: {
-                entity: ['$stateParams', 'Question', function($stateParams, Question) {
-                    return Question.get({id : $stateParams.id}).$promise;
+                entity: ['$stateParams', 'Subcategory', function($stateParams, Subcategory) {
+                    return Subcategory.get({id : $stateParams.id}).$promise;
                 }],
                 previousState: ["$state", function ($state) {
                     var currentStateData = {
-                        name: $state.current.name || 'question',
+                        name: $state.current.name || 'subcategory',
                         params: $state.params,
                         url: $state.href($state.current.name, $state.params)
                     };
@@ -74,22 +54,22 @@
                 }]
             }
         })
-        .state('question-detail.edit', {
-            parent: 'question-detail',
+        .state('subcategory-detail.edit', {
+            parent: 'subcategory-detail',
             url: '/detail/edit',
             data: {
                 authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/question/question-dialog.html',
-                    controller: 'QuestionDialogController',
+                    templateUrl: 'app/entities/subcategory/subcategory-dialog.html',
+                    controller: 'SubcategoryDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
-                        entity: ['Question', function(Question) {
-                            return Question.get({id : $stateParams.id}).$promise;
+                        entity: ['Subcategory', function(Subcategory) {
+                            return Subcategory.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {
@@ -99,83 +79,79 @@
                 });
             }]
         })
-        .state('question.new', {
-            parent: 'question',
+        .state('subcategory.new', {
+            parent: 'subcategory',
             url: '/new',
             data: {
                 authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/question/question-dialog.html',
-                    controller: 'QuestionDialogController',
+                    templateUrl: 'app/entities/subcategory/subcategory-dialog.html',
+                    controller: 'SubcategoryDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
                         entity: function () {
                             return {
-                                content: null,
-                                answer1: null,
-                                answer2: null,
-                                answer3: null,
-                                rightAnswer: null,
+                                subcategoryName: null,
                                 isActive: null,
                                 id: null
                             };
                         }
                     }
                 }).result.then(function() {
-                    $state.go('question', null, { reload: 'question' });
+                    $state.go('subcategory', null, { reload: 'subcategory' });
                 }, function() {
-                    $state.go('question');
+                    $state.go('subcategory');
                 });
             }]
         })
-        .state('question.edit', {
-            parent: 'question',
+        .state('subcategory.edit', {
+            parent: 'subcategory',
             url: '/{id}/edit',
             data: {
                 authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/question/question-dialog.html',
-                    controller: 'QuestionDialogController',
+                    templateUrl: 'app/entities/subcategory/subcategory-dialog.html',
+                    controller: 'SubcategoryDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
-                        entity: ['Question', function(Question) {
-                            return Question.get({id : $stateParams.id}).$promise;
+                        entity: ['Subcategory', function(Subcategory) {
+                            return Subcategory.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {
-                    $state.go('question', null, { reload: 'question' });
+                    $state.go('subcategory', null, { reload: 'subcategory' });
                 }, function() {
                     $state.go('^');
                 });
             }]
         })
-        .state('question.delete', {
-            parent: 'question',
+        .state('subcategory.delete', {
+            parent: 'subcategory',
             url: '/{id}/delete',
             data: {
                 authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/question/question-delete-dialog.html',
-                    controller: 'QuestionDeleteController',
+                    templateUrl: 'app/entities/subcategory/subcategory-delete-dialog.html',
+                    controller: 'SubcategoryDeleteController',
                     controllerAs: 'vm',
                     size: 'md',
                     resolve: {
-                        entity: ['Question', function(Question) {
-                            return Question.get({id : $stateParams.id}).$promise;
+                        entity: ['Subcategory', function(Subcategory) {
+                            return Subcategory.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {
-                    $state.go('question', null, { reload: 'question' });
+                    $state.go('subcategory', null, { reload: 'subcategory' });
                 }, function() {
                     $state.go('^');
                 });

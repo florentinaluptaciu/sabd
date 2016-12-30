@@ -14,30 +14,14 @@
     <property name="floatType" value="float" dbms="mysql, oracle"/>
 
     <!--
-        Added the entity Question.
+        Added the entity Subcategory.
     -->
-    <changeSet id="20161030164442-1" author="jhipster">
-        <createTable tableName="question">
+    <changeSet id="20161230101809-1" author="jhipster">
+        <createTable tableName="subcategory">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="content" type="clob">
-                <constraints nullable="true" />
-            </column>
-            
-            <column name="answer_1" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            
-            <column name="answer_2" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            
-            <column name="answer_3" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            
-            <column name="right_answer" type="integer">
+            <column name="subcategory_name" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             
@@ -45,7 +29,7 @@
                 <constraints nullable="true" />
             </column>
             
-            <column name="subcategory_id" type="bigint">
+            <column name="category_id" type="bigint">
                 <constraints nullable="true" />
             </column>
 
