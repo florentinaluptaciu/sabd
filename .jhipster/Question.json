@@ -1,6 +1,13 @@
 {
     "fluentMethods": true,
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipName": "subcategory",
+            "otherEntityName": "subcategory",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "subcategoryName"
+        }
+    ],
     "fields": [
         {
             "fieldName": "content",
@@ -26,11 +33,6 @@
         {
             "fieldName": "isActive",
             "fieldType": "Boolean"
-        },
-        {
-            "fieldName": "category",
-            "fieldType": "CATEGORY",
-            "fieldValues": "JAVA,HTML,SQL"
         }
     ],
     "changelogDate": "20161030164442",

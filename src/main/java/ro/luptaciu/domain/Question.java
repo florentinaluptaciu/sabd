@@ -5,8 +5,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
-import ro.luptaciu.domain.enumeration.CATEGORY;
-
 /**
  * A Question.
  */
@@ -39,9 +37,8 @@ public class Question implements Serializable {
     @Column(name = "is_active")
     private Boolean isActive;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "category")
-    private CATEGORY category;
+    @ManyToOne
+    private Subcategory subcategory;
 
     public Long getId() {
         return id;
@@ -129,17 +126,17 @@ public class Question implements Serializable {
         this.isActive = isActive;
     }
 
-    public CATEGORY getCategory() {
-        return category;
+    public Subcategory getSubcategory() {
+        return subcategory;
     }
 
-    public Question category(CATEGORY category) {
-        this.category = category;
+    public Question subcategory(Subcategory subcategory) {
+        this.subcategory = subcategory;
         return this;
     }
 
-    public void setCategory(CATEGORY category) {
-        this.category = category;
+    public void setSubcategory(Subcategory subcategory) {
+        this.subcategory = subcategory;
     }
 
     @Override
@@ -172,7 +169,6 @@ public class Question implements Serializable {
             ", answer3='" + answer3 + "'" +
             ", rightAnswer='" + rightAnswer + "'" +
             ", isActive='" + isActive + "'" +
-            ", category='" + category + "'" +
             '}';
     }
 }

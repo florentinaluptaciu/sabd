@@ -1,0 +1,19 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "categoryName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "isActive",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20161230095416",
+    "dto": "mapstruct",
+    "service": "no",
+    "entityTableName": "category",
+    "pagination": "no"
+}

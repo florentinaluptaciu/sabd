@@ -1,0 +1,64 @@
+<div>
+    <h2>Testxquestions</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="testxquestion.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Testxquestion
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>Answer</span></th>
+                    <th><span>Test</span></th>
+                    <th><span>Question</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="testxquestion in vm.testxquestions track by testxquestion.id">
+                    <td><a ui-sref="testxquestion-detail({id:testxquestion.id})">{{testxquestion.id}}</a></td>
+                    <td>{{testxquestion.answer}}</td>
+                    <td>
+                        <a ui-sref="test-detail({id:testxquestion.test.id})">{{testxquestion.test.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="question-detail({id:testxquestion.question.id})">{{testxquestion.question.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="testxquestion-detail({id:testxquestion.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="testxquestion.edit({id:testxquestion.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="testxquestion.delete({id:testxquestion.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

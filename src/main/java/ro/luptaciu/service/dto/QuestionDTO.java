@@ -1,10 +1,11 @@
 package ro.luptaciu.service.dto;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 import javax.persistence.Lob;
 
-import ro.luptaciu.domain.enumeration.CATEGORY;
 
 /**
  * A DTO for the Question entity.
@@ -26,8 +27,11 @@ public class QuestionDTO implements Serializable {
 
     private Boolean isActive;
 
-    private CATEGORY category;
 
+    private Long subcategoryId;
+    
+
+    private String subcategorySubcategoryName;
 
     public Long getId() {
         return id;
@@ -78,12 +82,22 @@ public class QuestionDTO implements Serializable {
     public void setIsActive(Boolean isActive) {
         this.isActive = isActive;
     }
-    public CATEGORY getCategory() {
-        return category;
+
+    public Long getSubcategoryId() {
+        return subcategoryId;
     }
 
-    public void setCategory(CATEGORY category) {
-        this.category = category;
+    public void setSubcategoryId(Long subcategoryId) {
+        this.subcategoryId = subcategoryId;
+    }
+
+
+    public String getSubcategorySubcategoryName() {
+        return subcategorySubcategoryName;
+    }
+
+    public void setSubcategorySubcategoryName(String subcategorySubcategoryName) {
+        this.subcategorySubcategoryName = subcategorySubcategoryName;
     }
 
     @Override
@@ -117,7 +131,6 @@ public class QuestionDTO implements Serializable {
             ", answer3='" + answer3 + "'" +
             ", rightAnswer='" + rightAnswer + "'" +
             ", isActive='" + isActive + "'" +
-            ", category='" + category + "'" +
             '}';
     }
 }

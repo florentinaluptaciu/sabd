@@ -1,0 +1,26 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "candidateId",
+            "otherEntityName": "candidates",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "first_name"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "answerDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "testCode",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170111181523",
+    "dto": "mapstruct",
+    "service": "serviceClass",
+    "entityTableName": "test",
+    "pagination": "no"
+}

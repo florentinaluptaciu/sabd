@@ -1,0 +1,31 @@
+
+<div>
+    <h2><span>Testxquestion</span> {{vm.testxquestion.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Answer</span></dt>
+        <dd>
+            <span>{{vm.testxquestion.answer}}</span>
+        </dd>
+        <dt><span>Test</span></dt>
+        <dd>
+            <a ui-sref="test-detail({id:vm.testxquestion.test.id})">{{vm.testxquestion.test.id}}</a>
+        </dd>
+        <dt><span>Question</span></dt>
+        <dd>
+            <a ui-sref="question-detail({id:vm.testxquestion.question.id})">{{vm.testxquestion.question.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="testxquestion-detail.edit({id:vm.testxquestion.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm"> Edit</span>
+    </button>
+</div>

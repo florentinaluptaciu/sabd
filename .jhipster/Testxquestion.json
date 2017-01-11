@@ -1,0 +1,28 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "test",
+            "otherEntityName": "test",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "question",
+            "otherEntityName": "question",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "answer",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20170111193641",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "testxquestion",
+    "pagination": "no"
+}
