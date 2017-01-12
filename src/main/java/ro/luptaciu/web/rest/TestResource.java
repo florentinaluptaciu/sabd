@@ -2,6 +2,7 @@ package ro.luptaciu.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import ro.luptaciu.service.TestService;
+import ro.luptaciu.service.dto.QuestionDTO;
 import ro.luptaciu.web.rest.util.HeaderUtil;
 import ro.luptaciu.service.dto.TestDTO;
 import org.slf4j.Logger;
@@ -28,7 +29,7 @@ import java.util.stream.Collectors;
 public class TestResource {
 
     private final Logger log = LoggerFactory.getLogger(TestResource.class);
-        
+
     @Inject
     private TestService testService;
 
@@ -128,4 +129,25 @@ public class TestResource {
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("test", id.toString())).build();
     }
 
+
+    @RequestMapping(value = "/startTest",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public List<QuestionDTO> getAllTests(@RequestParam(required = false) String code) {
+        log.debug("REST request to get all quesetion for code" + code);
+
+        return testService.findTestByCode(code);
+    }
+
+    @RequestMapping(value = "/displayTest",
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public String submitTest(@RequestBody(required = false) List<QuestionDTO> questions,@RequestParam(required = false) String code) {
+        log.debug("REST request to get all quesetion for code" + questions);
+
+        return "{\"right\":" + "\""+testService.calculateResult(questions,code)+"\"}";
+
+    }
 }

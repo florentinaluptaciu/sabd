@@ -11,6 +11,7 @@ import ro.luptaciu.domain.PersistentToken;
 import ro.luptaciu.domain.User;
 import ro.luptaciu.repository.PersistentTokenRepository;
 import ro.luptaciu.repository.UserRepository;
+import ro.luptaciu.service.dto.QuestionDTO;
 import ro.luptaciu.service.dto.SubcategoryModel;
 import ro.luptaciu.service.dto.TestDTO;
 import ro.luptaciu.service.util.RandomUtil;
@@ -61,6 +62,12 @@ public class TestServiceIntTest {
 
         System.out.println(testxquestions);
 
+    }
+
+    @Test
+    public void testQuery(){
+        List<QuestionDTO> questionList = testService.findTestByCode("fr");
+        System.out.println(questionList);
     }
 
 }

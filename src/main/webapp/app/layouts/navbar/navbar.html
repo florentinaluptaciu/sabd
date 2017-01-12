@@ -11,6 +11,14 @@
                 <img class="logo-img" src="content/images/logo-jhipster.png"/>
                 <span>Interview</span> <span class="navbar-version">v{{VERSION}}</span>
             </a>
+            <ul class="nav navbar-nav navbar-right">
+                <li ui-sref-active="active">
+                    <a ui-sref="startTest">
+                        <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
+                        <span>Start Test</span>
+                    </a>
+                </li>
+            </ul>
         </div>
         <div class="navbar-collapse" uib-collapse="vm.isNavbarCollapsed" ng-switch="vm.isAuthenticated()">
             <ul class="nav navbar-nav navbar-right">
@@ -21,7 +29,8 @@
                     </a>
                 </li>
                 <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
-                <li ng-class="{active: vm.$state.includes('entity')}" ng-switch-when="true" uib-dropdown class="dropdown pointer">
+                <li ng-class="{active: vm.$state.includes('entity')}" ng-switch-when="true" uib-dropdown
+                    class="dropdown pointer">
                     <a class="dropdown-toggle" uib-dropdown-toggle href="" id="entity-menu">
                         <span>
                             <span class="glyphicon glyphicon-th-list"></span>
@@ -35,37 +44,37 @@
                         <li ui-sref-active="active">
                             <a ui-sref="question" ng-click="vm.collapseNavbar()">
                                 <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                <span >Question</span>
+                                <span>Question</span>
                             </a>
                         </li>
                         <li ui-sref-active="active">
                             <a ui-sref="candidates" ng-click="vm.collapseNavbar()">
                                 <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                <span >Candidates</span>
+                                <span>Candidates</span>
                             </a>
                         </li>
                         <li ui-sref-active="active">
                             <a ui-sref="category" ng-click="vm.collapseNavbar()">
                                 <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                <span >Category</span>
+                                <span>Category</span>
                             </a>
                         </li>
                         <li ui-sref-active="active">
                             <a ui-sref="subcategory" ng-click="vm.collapseNavbar()">
                                 <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                <span >Subcategory</span>
+                                <span>Subcategory</span>
                             </a>
                         </li>
                         <li ui-sref-active="active">
                             <a ui-sref="test" ng-click="vm.collapseNavbar()">
                                 <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                <span >Test</span>
+                                <span>Test</span>
                             </a>
                         </li>
                         <li ui-sref-active="active">
                             <a ui-sref="testxquestion" ng-click="vm.collapseNavbar()">
                                 <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                <span >Testxquestion</span>
+                                <span>Testxquestion</span>
                             </a>
                         </li>
                         <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->

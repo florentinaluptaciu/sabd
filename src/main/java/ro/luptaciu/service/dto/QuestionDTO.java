@@ -25,11 +25,14 @@ public class QuestionDTO implements Serializable {
 
     private Integer rightAnswer;
 
+    private Integer testeeAnswer;
+
+
     private Boolean isActive;
 
 
     private Long subcategoryId;
-    
+
 
     private String subcategorySubcategoryName;
 
@@ -100,6 +103,22 @@ public class QuestionDTO implements Serializable {
         this.subcategorySubcategoryName = subcategorySubcategoryName;
     }
 
+    public Integer getTesteeAnswer() {
+        return testeeAnswer;
+    }
+
+    public void setTesteeAnswer(Integer testeeAnswer) {
+        this.testeeAnswer = testeeAnswer;
+    }
+
+    public Boolean getActive() {
+        return isActive;
+    }
+
+    public void setActive(Boolean active) {
+        isActive = active;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -125,12 +144,15 @@ public class QuestionDTO implements Serializable {
     public String toString() {
         return "QuestionDTO{" +
             "id=" + id +
-            ", content='" + content + "'" +
-            ", answer1='" + answer1 + "'" +
-            ", answer2='" + answer2 + "'" +
-            ", answer3='" + answer3 + "'" +
-            ", rightAnswer='" + rightAnswer + "'" +
-            ", isActive='" + isActive + "'" +
+            ", content='" + content + '\'' +
+            ", answer1='" + answer1 + '\'' +
+            ", answer2='" + answer2 + '\'' +
+            ", answer3='" + answer3 + '\'' +
+            ", rightAnswer=" + rightAnswer +
+            ", testeeAnswer=" + testeeAnswer +
+            ", isActive=" + isActive +
+            ", subcategoryId=" + subcategoryId +
+            ", subcategorySubcategoryName='" + subcategorySubcategoryName + '\'' +
             '}';
     }
 }

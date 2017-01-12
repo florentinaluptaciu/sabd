@@ -1,0 +1,30 @@
+<div>
+    <h2>GoodLuck</h2>
+    <jhi-alert></jhi-alert>
+
+    <div ng-if="vm.show">
+        <table>
+            <tr ng-repeat="question in vm.questions track by question.id">
+
+                <td>{{question.content}}</td>
+                <td>
+                    <div class="form-group">
+                        <label for="field_category">Chose Answer</label>
+                        <select class="form-control" id="field_category"
+                                ng-model="question.testeeAnswer">
+                            <option value="1">{{question.answer1}}</option>
+                            <option value="2">{{question.answer2}}</option>
+                            <option value="3">{{question.answer3}}</option>
+                        </select>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <button type="button"
+                ng-click = "vm.submit()"
+                class="btn btn-success btn-lg">
+            <span class="glyphicon glyphicon-check"></span>
+        </button>
+    </div>
+    <div ng-if="!vm.show">{{vm.message}}</div>
+</div>
